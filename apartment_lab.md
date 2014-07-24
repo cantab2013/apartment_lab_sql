@@ -100,17 +100,46 @@ DELETE FROM owners WHERE name = 'Jane';
 15. Show all of the properties in alphabetical order that are not named Archstone and do not have an id of 3 or 5. 
 
 ```
-
+SELECT * FROM properties WHERE (property_id<>3 AND property_id<>5 AND name<>'Archstone') ORDER BY name ASC;
 ```
 16. Count the total number of rows in the properties table.
+
+```
+SELECT COUNT(*) FROM properties;
+```
 17. Show the highest age of all owners.
+
+```
+SELECT MAX(age) FROM owners;
+```
+
 18. Show the names of the first three owners in your owners table.
+
+```
+SELECT * FROM owners LIMIT 3 OFFSET 0;
+```
 19. Create a foreign key that references the owner_id in the owners table and forces the constraint ON DELETE NO ACTION. 
+```
+INSERT INTO owners WITH CHECK ADD CONSTRAINT 
+   FOREIGN KEY REFERENCES owner_id 
+   ON DELETE NO ACTION
+
+```
+
 20. Show all of the information from the owners table and the properties table in one joined table.  
+
+```
+SELECT * FROM owners JOIN properties ON owners.owner_id = properties.owner_id;
+```
+
 ```
 Bonus (this might require you to look up documentation online)
 
 ```
 1. In the properties table change the name of the column "name" to "property_name". 
+
+```
+
+```
 2. Count the total number of properties where the owner_id is between 1 and 3.
 ```
